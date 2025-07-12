@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    /* 헤더 */
+    .main-header {
+      background-color: #D9D9D9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    .main-header .logo {
+      position: absolute;
+      left: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex: 2;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+    }
+
+    /* 아이콘 바 */
+    .icon-bar {
+      position: absolute;
+      right: 30px;
+      top: 60px; /* 헤더 아래에 고정 */
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+    }
+
+    .icon-bar span {
+      cursor: pointer;
+    }
+
+    /* 사이드 메뉴 */
+    .side-menu {
+      position: fixed;
+      top: 130px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 28px;
+    }
+
+    /* 장바구니 영역 */
+    .cart-section {
+      padding: 40px 80px 120px 150px;
+    }
+
+    .cart-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+
+    .cart-img img {
+      width: 160px;
+      height: auto;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .cart-info {
+      flex: 1;
+    }
+
+    .cart-info p {
+      margin: 8px 0;
+    }
+
+    .option {
+      background-color: #F2F2F2;
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .cart-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .price {
+      font-weight: bold;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-option {
+      background-color: #D8E0EB;
+    }
+
+    .btn-order,
+    .btn-delete {
+      background-color: #D9D9D9;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .cart-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .btn-footer {
+      background-color: #D8E0EB;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header class="main-header">
+    <div class="logo" onclick="goHome()">MO:DE</div>
+    <nav class="nav-menu">
+      <a href="#">BEST</a>
+      <a href="#">여름🌱</a>
+      <a href="#">NEW</a>
+      <a href="#">당일 배송 🚚</a>
+      <a href="#">SALE</a>
+      <a href="#">COMMUNITY</a>
+    </nav>
+    <div class="icon-bar">
+      <span>👤</span>
+      <span>🔍</span>
+      <span onclick="goCart()" style="cursor: pointer;">🛒</span>
+    </div>
+  </header>
+
+  <!-- 사이드 메뉴 -->
+  <aside class="side-menu">
+    <div>👕</div>
+    <div onclick="goBottom()" style="cursor: pointer;">👖</div>
+    <div>👗</div>
+    <div>👜</div>
+  </aside>
+
+  <!-- 본문 -->
+  <main class="cart-section">
+    <h2>CART</h2>
+
+    <!-- 상품 1 -->
+    <div class="cart-item">
+      <input type="checkbox" />
+      <div class="cart-img">
+        <img src="image/qu-nh-le-m-nh-Mql7DPCP5GE-unsplash.jpg" alt="상품1">
+      </div>
+      <div class="cart-info">
+        <p>블루머 시어서커 라벨 스트라이프 루즈핏 셔츠 - 3color</p>
+        <p class="option">블랙 / S</p>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-option">옵션변경</button>
+        <p class="price">34900원</p>
+        <div class="action-buttons">
+          <button class="btn btn-delete">삭제</button>
+          <button class="btn btn-order">주문하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 상품 2 -->
+    <div class="cart-item">
+      <input type="checkbox" />
+      <div class="cart-img">
+        <img src="image/yagwangsok_photo-mETzidEunmc-unsplash.jpg" alt="상품2">
+      </div>
+      <div class="cart-info">
+        <p>몬드 썸머 니트 - 4color</p>
+        <p class="option">라이트 그레이 / free</p>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-option">옵션변경</button>
+        <p class="price">28000원</p>
+        <div class="action-buttons">
+          <button class="btn btn-delete">삭제</button>
+          <button class="btn btn-order">주문하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 주문 버튼 -->
+    <div class="cart-footer">
+      <button class="btn-footer">선택상품주문</button>
+      <button class="btn-footer">전체상품주문</button>
+    </div>
+  </main>
+
+  <script>
+    function goHome() {
+      window.location.href = "최종main.html";
+    }
+
+    function goBottom() {
+      window.location.href = "최종bottom.html";
+    }
+
+    function goCart() {
+      window.location.href = "최종cart.html";
+    }
+  </script>
+</body>
+</html>
