@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bottom Page</title>
+  <style>
+    :root {
+      --image-gap: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    /* 헤더 */
+    .main-header {
+      background-color: #D9D9D9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    .main-header .logo {
+      position: absolute;
+      left: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+    }
+
+    /* 아이콘 바 */
+    .icon-bar {
+      position: absolute;
+      right: 30px;
+      top: 60px;   /* 헤더 아래에 고정 */
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+    }
+
+    .icon-bar span {
+      cursor: pointer;
+    }
+
+    /* 사이드 메뉴 */
+    .side-menu {
+      position: fixed;
+      top: 160px;
+      left: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 30px;
+    }
+
+    /* 메인 콘텐츠 */
+    .bottom-section {
+      padding: 40px 60px 40px 120px;
+    }
+
+    .bottom-section h2,
+    .bottom-section h3 {
+      margin: 20;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr 3fr;  /* gpt야 고마워*/
+      gap: var(--image-gap);
+      margin-top: 20px;
+      align-items: stretch;
+    }
+
+    .text-box {
+      font-size: 20px;
+      color: #333;
+      line-height: 2;
+      margin-top: 500px;
+      margin-left: 100px;
+    }
+
+    .big-image {
+      grid-row: span 2;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .big-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .big-image img:hover {
+      transform: scale(1.05);
+    }
+
+    .small-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);    /* 찾느라 1시간 걸렸음*/
+      grid-template-rows: repeat(2, 1fr);
+      gap: var(--image-gap);
+    }
+
+    .small-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: #f0f0f0;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+
+    .small-images img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="main-header">
+    <div class="logo" onclick="goHome()">MO:DE</div>
+    <nav class="nav-menu">
+      <a href="#">BEST</a>
+      <a href="#">여름🌱</a>
+      <a href="#">NEW</a>
+      <a href="#">당일 배송 🚚</a>
+      <a href="#">SALE</a>
+      <a href="#">COMMUNITY</a>
+    </nav>
+  </header>
+
+  <!-- 아이콘 바 -->
+  <div class="icon-bar">
+    <span>👤</span>
+    <span>🔍</span>
+    <span onclick="goCart()">🛒</span>
+  </div>
+
+  <!-- 사이드 메뉴 -->
+  <aside class="side-menu">
+    <div>👕</div>
+    <div onclick="goBottom()" style="cursor: pointer;">👖</div>
+    <div>👗</div>
+    <div>👜</div>
+  </aside>
+
+  <!-- Bottom 콘텐츠 -->
+  <main class="bottom-section">
+    <h2>TODAY BEST</h2>
+    <h3>BOTTOM</h3>
+
+    <div class="bottom-grid">
+      <!-- 왼쪽 태그 -->
+      <div class="text-box">
+        <p># 슬랙스<br># 쇼츠<br># 데님<br># 트레이닝</p>
+      </div>
+
+      <!-- 큰 이미지 -->
+      <div class="big-image">
+        <img src="image/matthew-moloney-BBH3z2Jv0WQ-unsplash.jpg" alt="큰 이미지">
+      </div>
+
+      <!-- 작은 이미지들 -->
+      <div class="small-images">
+        <img src="image/pexels-august-de-richelieu-7432117.jpg" alt="작은이미지1">
+        <img src="image/pexels-84327456-15923914.jpg" alt="작은이미지2">
+        <img src="image/yuriy-vertikov-B8fpUrxHxEI-unsplash.jpg" alt="작은이미지3">
+        <img src="image/tuananh-blue-aO5KpUZ8bSc-unsplash.jpg" alt="작은이미지4">
+        <img src="image/tuananh-blue-XdXk39Bj3B0-unsplash.jpg" alt="작은이미지5">
+        <img src="image/pexels-a-darmel-9040292.jpg" alt="작은이미지6">
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function goHome() {
+      window.location.href = "최종main.html";
+    }
+    function goBottom() {
+      window.location.href = "최종bottom.html";
+    }
+    function goCart() {
+      window.location.href = "최종cart.html";
+    }
+  </script>
+</body>
+</html>
